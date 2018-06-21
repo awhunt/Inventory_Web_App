@@ -1,0 +1,12 @@
+info-left {
+	float: left;
+}
+
+info-right {
+	float: right;
+}
+
+item {
+	border: 4px solid black;
+	border-spacing: 15px;
+}

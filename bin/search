@@ -1,0 +1,59 @@
+#!/bin/bash
+# search
+
+# Sanity check command line options
+usage() {
+  echo "Usage: $0 (start|restart|stop)"
+}
+
+if [ $# -ne 1 ]; then
+	usage
+	exit 1
+fi
+
+PORT=8000
+PIDS=$(lsof -ti:$PORT)
+
+start() {
+	for PID in $(lsof -ti:$PORT)
+	do
+		echo "Error: a process is already using port $PORT"
+		exit 1
+	done
+	echo "starting search server ..."
+	export FLASK_APP=search
+	echo "+ export FLASK_APP=search"
+	export SEARCH_SETTINGS=config.py
+	export FLASK_DEBUG=1
+	echo "+ export SEARCH_SETTINGS=config.py"
+	flask run --host 0.0.0.0 --port $PORT &> /dev/null &
+	echo "+ flask run --host 0.0.0.0 --port $PORT  &> /dev/null &"
+}
+
+stop() {
+	echo "stopping search server ..."
+
+	pkill -9 python3
+	pkill -9 flask
+	echo "+ pkill -9 python3"
+	echo "+ pkill -9 flask"
+
+}
+
+# Parse argument.  $1 is the first argument
+case $1 in
+  "start")
+	start
+	;;
+  "stop")
+	stop
+	;;
+  "restart")
+	stop
+	start
+	;;
+  *)
+    usage
+    exit 1
+    ;;
+esac
