@@ -17,6 +17,7 @@ create() {
     echo "ye"
     sqlite3 search/var/ace_items.sqlite3 < search/sql/ace_items.sql
     echo "+ sqlite3 search/var/ace_items.sqlite3 < search/sql/ace_items.sql"
+    python update_desc.py
 }
 
 destroy() {
