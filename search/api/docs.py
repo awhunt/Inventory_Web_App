@@ -5,6 +5,7 @@ import search
 
 SKU_LEN1 = 5
 SKU_LEN2 = 7
+UPC_LEN  = {12, 13, 14}
 
 def is_number(to_check):
     for ch in to_check:
@@ -41,6 +42,10 @@ def get_hits():
         or len(query_list[0]) == SKU_LEN2) and is_number(query_list[0]):
         sku = query_list[0]
         sql_string = sql_string + "sku=" + sku
+    # user enters a upc
+    # elif len(query_list) == 1 and len(query_list[0]) in UPC_LEN:
+    #     upc = query_list[0]
+    #     sql_string = sql_string + "upc=" + upc
     # general case
     else:
         index = 0
