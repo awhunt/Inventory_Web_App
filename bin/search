@@ -29,6 +29,21 @@ start() {
 	flask run --host 0.0.0.0 --port $PORT &> /dev/null &
 	echo "+ flask run --host 0.0.0.0 --port $PORT  &> /dev/null &"
 }
+debug() {
+	for PID in $(lsof -ti:$PORT)
+		do
+			echo "Error: a process is already using port $PORT"
+			exit 1
+		done
+		echo "starting search server ..."
+		export FLASK_APP=search
+		echo "+ export FLASK_APP=search"
+		export SEARCH_SETTINGS=config.py
+		export FLASK_DEBUG=1
+		echo "+ export SEARCH_SETTINGS=config.py"
+		flask run --host 0.0.0.0 --port $PORT 
+		echo "+ flask run --host 0.0.0.0 --port $PORT"
+}
 
 stop() {
 	echo "stopping search server ..."
@@ -51,6 +66,10 @@ case $1 in
   "restart")
 	stop
 	start
+	;;
+  "debug")
+	stop
+	debug
 	;;
   *)
     usage

@@ -25,6 +25,15 @@ destroy() {
     echo "+ rm -rf search/var/ace_items.sqlite3"
 }
 
+update() {
+  #python automate_data.py
+  for f in /mnt/c/Users/awhun/Documents/ProductResults/*; do
+    echo $f
+    xls_to_csv.vbs $f
+  done
+  #python update_desc.py
+}
+
 if [ $# -ne 1 ]; then
   usage
   exit 1
@@ -44,6 +53,11 @@ case $1 in
     destroy
     create
     ;;
+
+  "update")
+    update
+    ;;
+
   *)
     usage
     exit 1

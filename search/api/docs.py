@@ -43,9 +43,9 @@ def get_hits():
         sku = query_list[0]
         sql_string = sql_string + "sku=" + sku
     # user enters a upc
-    # elif len(query_list) == 1 and len(query_list[0]) in UPC_LEN:
-    #     upc = query_list[0]
-    #     sql_string = sql_string + "upc=" + upc
+    elif len(query_list) == 1 and len(query_list[0]) in UPC_LEN:
+        upc = query_list[0]
+        sql_string = sql_string + """upc=\"""" + upc + """\""""
     # general case
     else:
         index = 0
@@ -61,5 +61,6 @@ def get_hits():
 
     response = dict()
     response["Items"] = ace_db.execute(sql_string).fetchall()
+    response["query"] = query_list[0]
 
     return flask.jsonify(**response)
