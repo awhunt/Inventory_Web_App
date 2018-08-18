@@ -47,28 +47,22 @@ class SearchBar extends React.Component {
 
 
   render() {
-    var cardStyle = {
-      "border": "solid 2px black",
-      "border-radius": "5px",
-      "padding": "10px",
-      "margin": "10px"
-    };
 
     const num_results = this.state.search_results.length
 
     return (
-      <div class="container">
+      <div className="container col-xs-12">
         <div className="jumbotron text-center"> 
-          <h1> Hunt's Ace Helper: </h1>
+          <h1> <b>Hunt's Ace Helper:</b> </h1>
           <div className="search">
-            <form id="search-form" class="form-inline" >
-              <input type="text" class="form-control" placeholder="Search" 
+            <form id="search-form" className="form-inline" >
+              <input type="text" className="form-control" placeholder="Search" 
               value={this.state.new_search} onChange={this.handleChangeText} />
               <input type="submit" onClick={this.handleClick} />
             </form>
           </div>
         </div>
-        <div class="container">
+        <div className="container col-xs-12 text-center">
           {this.state.searched ? 
             <div>
               <h2> Search returned <b>{num_results}</b> results </h2>
@@ -79,28 +73,27 @@ class SearchBar extends React.Component {
             </div>
           }
         </div>
-        <div class="container">
+        <div className="container col-xs-12">
           {this.state.search_results.map(result => (
             (result != null) ?
-              <div class="card col-xs-12" 
-              style={cardStyle} key={result.sku}>
-                <div class="card-block">
-                  <div class="card-title"> 
+              <div className="card col-xs-12 cardStyle" key={result.sku}>
+                <div className="card-block">
+                  <div className="card-title"> 
                     <h2> <b> {result.sku} </b> </h2> 
                   </div>
-                  <div class="card-text">  
+                  <div className="card-text">  
                     <h1> {result.descr} </h1> 
                   </div>
                   <h2>
-                    <span class="card-footer" style={{float: "left"}}>  
+                    <span className="price card-footer" style={{float: "left"}}>  
                       ${result.price}
                     </span>
                     { (result.loc) ? 
-                      <span class="card-footer" style={{float: "right"}}>
+                      <span className="card-footer" style={{float: "right"}}>
                         {result.loc}
                       </span>
                       :
-                      <span class="card-footer" style={{float: "right"}}>
+                      <span className="card-footer" style={{float: "right"}}>
                         Order From ACENET
                       </span>
                     }
