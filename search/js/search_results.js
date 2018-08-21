@@ -51,9 +51,13 @@ class SearchBar extends React.Component {
     const num_results = this.state.search_results.length
 
     return (
-      <div className="container col-xs-12">
+      <div className="container">
         <div className="jumbotron text-center"> 
-          <h1> <b>Hunt's Ace Helper:</b> </h1>
+          <h1> 
+            <img src="./static/MikerFaceClose.jpg" height="200" width="200" />
+            <b>Hunt's Ace Helper:</b> 
+            <img src="./static/MickFace.jpg" height="200" width="200" /> 
+          </h1>
           <div className="search">
             <form id="search-form" className="form-inline" >
               <input type="text" className="form-control" placeholder="Search" 
