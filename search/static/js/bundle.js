@@ -9642,33 +9642,33 @@ var SearchBar = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var cardStyle = {
-        "border": "solid 2px black",
-        "border-radius": "5px",
-        "padding": "10px",
-        "margin": "10px"
-      };
 
       var num_results = this.state.search_results.length;
 
       return _react2.default.createElement(
         'div',
-        { 'class': 'container' },
+        { className: 'container' },
         _react2.default.createElement(
           'div',
           { className: 'jumbotron text-center' },
           _react2.default.createElement(
             'h1',
             null,
-            ' Hunt\'s Ace Helper: '
+            _react2.default.createElement('img', { src: './static/MikerFaceClose.jpg', height: '200', width: '200' }),
+            _react2.default.createElement(
+              'b',
+              null,
+              'Hunt\'s Ace Helper:'
+            ),
+            _react2.default.createElement('img', { src: './static/MickFace.jpg', height: '200', width: '200' })
           ),
           _react2.default.createElement(
             'div',
             { className: 'search' },
             _react2.default.createElement(
               'form',
-              { id: 'search-form', 'class': 'form-inline' },
-              _react2.default.createElement('input', { type: 'text', 'class': 'form-control', placeholder: 'Search',
+              { id: 'search-form', className: 'form-inline' },
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search',
                 value: this.state.new_search, onChange: this.handleChangeText }),
               _react2.default.createElement('input', { type: 'submit', onClick: this.handleClick })
             )
@@ -9676,7 +9676,7 @@ var SearchBar = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { 'class': 'container' },
+          { className: 'container col-xs-12 text-center' },
           this.state.searched ? _react2.default.createElement(
             'div',
             null,
@@ -9703,18 +9703,17 @@ var SearchBar = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { 'class': 'container' },
+          { className: 'container col-xs-12' },
           this.state.search_results.map(function (result) {
             return result != null ? _react2.default.createElement(
               'div',
-              { 'class': 'card col-xs-12',
-                style: cardStyle, key: result.sku },
+              { className: 'card col-xs-12 cardStyle', key: result.sku },
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-block' },
+                { className: 'card-block' },
                 _react2.default.createElement(
                   'div',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   _react2.default.createElement(
                     'h2',
                     null,
@@ -9731,7 +9730,7 @@ var SearchBar = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                   'div',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'h1',
                     null,
@@ -9745,17 +9744,17 @@ var SearchBar = function (_React$Component) {
                   null,
                   _react2.default.createElement(
                     'span',
-                    { 'class': 'card-footer', style: { float: "left" } },
+                    { className: 'price card-footer', style: { float: "left" } },
                     '$',
                     result.price
                   ),
                   result.loc ? _react2.default.createElement(
                     'span',
-                    { 'class': 'card-footer', style: { float: "right" } },
+                    { className: 'card-footer', style: { float: "right" } },
                     result.loc
                   ) : _react2.default.createElement(
                     'span',
-                    { 'class': 'card-footer', style: { float: "right" } },
+                    { className: 'card-footer', style: { float: "right" } },
                     'Order From ACENET'
                   )
                 )
